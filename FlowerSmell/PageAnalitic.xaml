@@ -1,0 +1,45 @@
+﻿<Page x:Class="FlowerSmell.PageAnalitic"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:FlowerSmell"
+        xmlns:ct="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+ 
+      mc:Ignorable="d" 
+      d:DesignHeight="520" d:DesignWidth="820"
+      Title="PageAnalitic">
+    <Grid>
+        <Grid.Resources>
+            <DataTemplate x:Key="Template1">
+
+                <Line X1="{Binding X1}" X2="{Binding X2}" Y1="{Binding Y1}" Y2="{Binding Y2}" StrokeThickness="2" Stroke="{Binding Interior}"       StrokeDashArray="3,2" />
+
+            </DataTemplate>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid>
+          
+            <Button  
+                    Width="200" 
+                    Height="40" 
+                    Content="Распечатать" Click="Button_Click"
+                    />
+        </Grid>
+        <Grid x:Name="MainGrid" Grid.Row="1" >
+            <ct:Chart  x:Name="MainChart" Title="Продажи"  Foreground="#52734d" 
+                      FontWeight="Bold" BorderBrush="White" >
+
+                <ct:LineSeries
+                    Background="LightGray" Title="Прибыль" 
+                                 IndependentValueBinding="{Binding Path=Namee}" 
+                                  DependentValueBinding="{Binding Path=Sum}">
+                </ct:LineSeries>
+            </ct:Chart>
+        </Grid>
+
+    </Grid>
+</Page>
